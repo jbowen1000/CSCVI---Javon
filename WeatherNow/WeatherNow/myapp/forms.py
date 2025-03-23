@@ -6,12 +6,12 @@ class CustomUserCreationForm(UserCreationForm):
     password1 = forms.CharField(
         label="Password",
         widget=forms.PasswordInput(attrs={'placeholder': 'Enter password'}),
-        help_text=''  # Removes Django's default help text
+        help_text=''  
     )
     password2 = forms.CharField(
         label="Confirm Password",
         widget=forms.PasswordInput(attrs={'placeholder': 'Re-enter password'}),
-        help_text=''  # Removes Django's default help text
+        help_text=''  
     )
 
     class Meta:

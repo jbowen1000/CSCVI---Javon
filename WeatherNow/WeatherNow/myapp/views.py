@@ -30,13 +30,13 @@ def signup_view(request):
 
 # Weather Search View
 def weather_view(request):
-    api_key = 'f8995150c2e6d29062867ba7620b96f2'  # OpenWeather API Key
-    city = request.GET.get('city', '')  # Get city from user input
+    api_key = 'f8995150c2e6d29062867ba7620b96f2'  
+    city = request.GET.get('city', '')  
 
     weather = None
     error_message = None
 
-    if city:  # Fetch weather only if a city is provided
+    if city:  
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
         response = requests.get(url)
         weather_data = response.json()
