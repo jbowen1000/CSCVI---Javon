@@ -1,0 +1,29 @@
+<!-- myapp/templates/weather.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Search</title>
+</head>
+<body>
+    <h1>Weather Search</h1>
+
+    <!-- Weather Search Form -->
+    <form method="get" action="{% url 'weather' %}">
+        <label for="city">Enter city:</label>
+        <input type="text" id="city" name="city" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Display Weather Data if Available -->
+    {% if weather %}
+        <h2>Weather in {{ weather.city }}</h2>
+        <p>Temperature: {{ weather.temperature }}°C</p>
+        <p>Description: {{ weather.description }}</p>
+        <p>Humidity: {{ weather.humidity }}%</p>
+    {% elif error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>

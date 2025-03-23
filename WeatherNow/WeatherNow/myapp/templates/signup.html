@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <h1>Signup</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}  <!-- Display any validation errors -->
+        
+        <label for="id_username">Username:</label>
+        {{ form.username }}
+        {{ form.username.errors }}
+
+        <label for="id_password1">Password:</label>
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+
+        <label for="id_password2">Confirm Password:</label>
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+
+        <button type="submit">Sign Up</button>
+    </form>
+    
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</body>
+</html>
