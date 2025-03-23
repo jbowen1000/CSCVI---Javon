@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm
 
-# Signup view
+# Home View - Redirects to Login
+def home(request):
+    return redirect('login')
+
+# Signup View
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -17,7 +21,7 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
-# Login view
+# Login View
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
