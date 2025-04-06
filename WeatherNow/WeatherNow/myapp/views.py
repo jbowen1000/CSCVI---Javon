@@ -52,3 +52,5 @@ def weather_view(request):
             }
 
     return render(request, 'weather.html', {'weather': weather, 'error_message': error_message})
+
+
