@@ -37,7 +37,7 @@ def weather_view(request):
     error_message = None
 
     if city:  
-        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=imperial"
         response = requests.get(url)
         weather_data = response.json()
 
