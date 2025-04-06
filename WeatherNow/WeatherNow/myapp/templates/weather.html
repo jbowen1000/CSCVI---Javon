@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Search</title>
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <h1>Weather Search</h1>
@@ -27,6 +29,6 @@
     {% endif %}
 
     <button onclick="window.history.back()">Back</button>
-    
+
 </body>
 </html>
