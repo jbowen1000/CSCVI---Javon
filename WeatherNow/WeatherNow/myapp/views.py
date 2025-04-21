@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from myapp.forms import CustomUserCreationForm
+from .models import FavoriteCity
 import requests
 
 # Login View
@@ -53,4 +54,16 @@ def weather_view(request):
 
     return render(request, 'weather.html', {'weather': weather, 'error_message': error_message})
 
+# Add Favorite City
+def add_favorite(request):
+    if request.method == "POST":
+        city = request.POST.get("city")
+        if city:
+            FavoriteCity.objects.get_or_create(user=request.user, city_name=city)
+    return redirect("weather")
+
+# Remove Favorite City
+def remove_favorite(request, city_name):
+    FavoriteCity.objects.filter(user=request.user, city_name=city_name).delete()
+    return redirect("weather")
 

@@ -26,4 +26,6 @@ urlpatterns = [
     path('weather/', views.weather_view, name='weather'),
     path('login/', views.login_view, name='login'),  
     path('', views.login_view, name='home'),
+    path('add_favorite/', views.add_favorite, name='add_favorite'),
+    path('remove_favorite/<str:city_name>/', views.remove_favorite, name='remove_favorite'),
 ]

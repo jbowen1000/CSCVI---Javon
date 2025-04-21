@@ -29,5 +29,25 @@
 
     <button onclick="window.history.back()">Back</button>
 
+    {% if user.is_authenticated %}
+    <h3>Your Favorite Cities</h3>
+    <ul>
+        {% for favorite in user.favoritecity_set.all %}
+            <li>
+                {{ favorite.city_name }}
+                <a href="{% url 'remove_favorite' favorite.city_name %}">Remove</a>
+            </li>
+        {% empty %}
+            <li>No favorite cities yet.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="POST" action="{% url 'add_favorite' %}">
+    {% csrf_token %}
+    <input type="hidden" name="city" value="{{ weather.city }}">
+    <button type="submit">Add to Favorites</button>
+</form>
+
 </body>
 </html>
