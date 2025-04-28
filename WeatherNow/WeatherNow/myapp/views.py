@@ -64,6 +64,10 @@ def add_favorite(request):
 
 # Remove Favorite City
 def remove_favorite(request, city_name):
+    # Ensure the user is authenticated
+    if not request.user.is_authenticated:
+        return redirect('login')  # Redirect to login page if not authenticated
+    
+    # Only remove favorite if it's the logged-in user
     FavoriteCity.objects.filter(user=request.user, city_name=city_name).delete()
     return redirect("weather")
-

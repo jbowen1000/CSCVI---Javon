@@ -20,7 +20,7 @@
     <!-- Display Weather Data if Available -->
     {% if weather %}
         <h2>Weather in {{ weather.city }}</h2>
-        <p>Temperature: {{ weather.temperature }}°C</p>
+        <p>Temperature: {{ weather.temperature }}°F</p>
         <p>Description: {{ weather.description }}</p>
         <p>Humidity: {{ weather.humidity }}%</p>
     {% elif error_message %}
@@ -47,6 +47,15 @@
     {% csrf_token %}
     <input type="hidden" name="city" value="{{ weather.city }}">
     <button type="submit">Add to Favorites</button>
+</form>
+
+<!-- Logout Button -->
+<a href="#" onclick="document.getElementById('logout-form').submit();">
+    <button class="logout-btn">Logout</button>
+</a>
+
+<form id="logout-form" method="POST" action="{% url 'logout' %}" style="display: none;">
+    {% csrf_token %}
 </form>
 
 </body>

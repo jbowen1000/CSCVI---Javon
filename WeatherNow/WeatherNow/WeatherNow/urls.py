@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from myapp import views
 from myapp.views import weather_view
+from django.contrib.auth import views as auth_views
+
 
 
 urlpatterns = [
@@ -28,4 +30,5 @@ urlpatterns = [
     path('', views.login_view, name='home'),
     path('add_favorite/', views.add_favorite, name='add_favorite'),
     path('remove_favorite/<str:city_name>/', views.remove_favorite, name='remove_favorite'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
